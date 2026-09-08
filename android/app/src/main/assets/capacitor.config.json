@@ -1,0 +1,8 @@
+{
+	"appId": "com.sagunika.cosmetics",
+	"appName": "Sagunika Cosmetic",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https"
+	}
+}

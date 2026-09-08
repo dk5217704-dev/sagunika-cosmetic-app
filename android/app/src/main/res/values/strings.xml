@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sagunika Cosmetic</string>
+    <string name="title_activity_main">Sagunika Cosmetic</string>
+    <string name="package_name">com.sagunika.cosmetics</string>
+    <string name="custom_url_scheme">com.sagunika.cosmetics</string>
+</resources>

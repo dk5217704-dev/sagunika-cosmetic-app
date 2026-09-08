@@ -1,0 +1,6 @@
+{
+  "name": "Sagunika Cosmetic",
+  "description": "Beauty That Inspires Confidence. Complete Flutter Android e-commerce application with Firebase Auth, Cloud Firestore, Firebase Storage, and FCM support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

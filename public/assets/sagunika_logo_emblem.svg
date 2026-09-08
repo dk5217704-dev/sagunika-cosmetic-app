@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="245 110 534 534" width="1024" height="1024">
+  <defs>
+    <!-- Background Gradient: Rich Luxury Warm Cream / Champagne -->
+    <radialGradient id="creamBg" cx="50%" cy="40%" r="65%" fx="50%" fy="36%">
+      <stop offset="0%" stop-color="#FDFBF8" />
+      <stop offset="50%" stop-color="#FAF4EE" />
+      <stop offset="100%" stop-color="#F3EAE0" />
+    </radialGradient>
+
+    <!-- Metallic Gold 3D Ring Gradient -->
+    <linearGradient id="goldRing" x1="12%" y1="12%" x2="88%" y2="88%">
+      <stop offset="0%" stop-color="#F7E6B2" />
+      <stop offset="18%" stop-color="#D4A747" />
+      <stop offset="38%" stop-color="#FDF0C8" />
+      <stop offset="58%" stop-color="#B88628" />
+      <stop offset="82%" stop-color="#FBE6AB" />
+      <stop offset="100%" stop-color="#8F6218" />
+    </linearGradient>
+
+    <!-- Metallic Gold S Monogram Gradient -->
+    <linearGradient id="goldS" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF0C8" />
+      <stop offset="25%" stop-color="#D4A747" />
+      <stop offset="50%" stop-color="#FFF5D6" />
+      <stop offset="75%" stop-color="#B6832B" />
+      <stop offset="100%" stop-color="#8C5E14" />
+    </linearGradient>
+
+    <!-- Polished Jet Black C Monogram Gradient -->
+    <linearGradient id="blackC" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#2C2C2C" />
+      <stop offset="35%" stop-color="#141414" />
+      <stop offset="70%" stop-color="#050505" />
+      <stop offset="100%" stop-color="#1E1E1E" />
+    </linearGradient>
+
+    <!-- Royal Crown & Delicate Silhouette Details Gold Gradient -->
+    <linearGradient id="goldDetails" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2CE" />
+      <stop offset="45%" stop-color="#D4A747" />
+      <stop offset="100%" stop-color="#9C6F1C" />
+    </linearGradient>
+
+    <!-- Horizontal Gold Typography & Dividers Gradient -->
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B6832B" />
+      <stop offset="30%" stop-color="#E2BE62" />
+      <stop offset="50%" stop-color="#F9E6AE" />
+      <stop offset="70%" stop-color="#E2BE62" />
+      <stop offset="100%" stop-color="#B6832B" />
+    </linearGradient>
+
+    <!-- Realistic Soft Shadow for Circular Emblem -->
+    <filter id="emblemShadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#735230" flood-opacity="0.22" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#402912" flood-opacity="0.12" />
+    </filter>
+
+    <!-- Soft Shadow for 3D Monogram Elements -->
+    <filter id="monogramShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="8" stdDeviation="7" flood-color="#301F0D" flood-opacity="0.28" />
+    </filter>
+  </defs>
+
+  <!-- Cream Canvas Background -->
+  <rect width="1024" height="1024" fill="url(#creamBg)" />
+
+  <!-- EMBLEM GROUP WITH SHADOW -->
+  <g filter="url(#emblemShadow)">
+    <!-- Outer Metallic Gold Circular Ring (3D Embossed) -->
+    <!-- Specular highlight rim -->
+    <circle cx="512" cy="385" r="255" fill="none" stroke="#FAF2D6" stroke-width="2.5" opacity="0.85" />
+    <!-- Main metallic gold ring -->
+    <circle cx="512" cy="385" r="250" fill="none" stroke="url(#goldRing)" stroke-width="15" stroke-linecap="round" />
+    <!-- Inner bevel rim shadow -->
+    <circle cx="512" cy="385" r="242" fill="none" stroke="#7A520E" stroke-width="1.8" opacity="0.6" />
+    <circle cx="512" cy="385" r="241" fill="none" stroke="#FFE9A8" stroke-width="1.2" opacity="0.75" />
+
+    <!-- FIVE-POINT ROYAL CROWN (Above Monogram) -->
+    <g transform="translate(512, 185) scale(0.95)">
+      <!-- Crown Base Arched Band -->
+      <path d="M -48 10 C -20 16, 20 16, 48 10 C 42 16, -42 16, -48 10 Z" fill="url(#goldDetails)" />
+      <path d="M -46 12 C -20 17, 20 17, 46 12" stroke="#FFF0C4" stroke-width="1.5" fill="none" />
+
+      <!-- Crown 5 Spikes Body -->
+      <path d="M -46 10 
+               C -42 3, -40 -12, -40 -18 
+               L -24 -2 
+               L -16 -24 
+               L 0 2 
+               L 0 -36 
+               L 0 2 
+               L 16 -24 
+               L 24 -2 
+               L 40 -18 
+               C 40 -12, 42 3, 46 10
+               C 20 15, -20 15, -46 10 Z" 
+            fill="url(#goldDetails)" 
+            filter="drop-shadow(0 3px 4px rgba(90,60,15,0.3))" />
+
+      <!-- Crown Pearls on Tips -->
+      <circle cx="0" cy="-38" r="4.8" fill="#FFF2C6" stroke="#9E6E1A" stroke-width="1.2" />
+      <circle cx="-40" cy="-20" r="4.2" fill="#FFF2C6" stroke="#9E6E1A" stroke-width="1.2" />
+      <circle cx="40" cy="-20" r="4.2" fill="#FFF2C6" stroke="#9E6E1A" stroke-width="1.2" />
+      <circle cx="-16" cy="-26" r="3.8" fill="#FFF2C6" stroke="#9E6E1A" stroke-width="1.2" />
+      <circle cx="16" cy="-26" r="3.8" fill="#FFF2C6" stroke="#9E6E1A" stroke-width="1.2" />
+      
+      <!-- Crown Base Jewels -->
+      <circle cx="0" cy="12.5" r="2.2" fill="#8F1426" />
+      <circle cx="-22" cy="12" r="1.8" fill="#14603B" />
+      <circle cx="22" cy="12" r="1.8" fill="#14603B" />
+    </g>
+
+    <!-- MONOGRAM GROUP (S + C + Silhouette + Leaf) -->
+    <g filter="url(#monogramShadow)">
+      <!-- INTERLOCKING BLACK "C" MONOGRAM -->
+      <path d="M 680 270 
+               C 660 252, 620 240, 560 242
+               C 480 245, 430 290, 430 385
+               C 430 480, 485 530, 570 530
+               C 630 530, 675 510, 695 490
+               C 690 485, 670 495, 630 502
+               C 565 510, 495 475, 495 385
+               C 495 298, 560 262, 630 262
+               C 660 262, 678 268, 680 270 Z" 
+            fill="url(#blackC)" />
+      <!-- Specular highlight on black C outer edge -->
+      <path d="M 680 270 
+               C 660 252, 620 240, 560 242
+               C 480 245, 430 290, 430 385
+               C 430 480, 485 530, 570 530
+               C 630 530, 675 510, 695 490"
+            fill="none" stroke="#666666" stroke-width="1.6" opacity="0.65" />
+
+      <!-- ELEGANT WOMAN SILHOUETTE (Fine golden line art inside C) -->
+      <g transform="translate(580, 375)">
+        <!-- Flowing Hair Strands (Left Arch) -->
+        <path d="M -35 -95 C -15 -85, 10 -65, 15 -35 C 18 -15, 12 10, -5 30 C -15 42, -28 50, -38 55"
+              fill="none" stroke="url(#goldDetails)" stroke-width="4.5" stroke-linecap="round" />
+        <path d="M -22 -105 C 0 -92, 28 -68, 30 -30 C 32 -5, 22 22, 5 45"
+              fill="none" stroke="url(#goldDetails)" stroke-width="3.2" stroke-linecap="round" opacity="0.85" />
+        <path d="M -10 -112 C 15 -100, 42 -70, 42 -25 C 42 10, 28 35, 18 52"
+              fill="none" stroke="url(#goldDetails)" stroke-width="2.4" stroke-linecap="round" opacity="0.75" />
+
+        <!-- Facial Profile Line (Forehead, Nose, Lips, Chin, Jawline, Neck) -->
+        <path d="M 12 -45 
+                 C 20 -38, 25 -30, 26 -22
+                 C 26 -16, 23 -12, 33 -5
+                 C 37 -2, 40 2, 35 6
+                 C 30 9, 27 10, 31 15
+                 C 34 18, 33 22, 28 25
+                 C 22 28, 26 35, 23 42
+                 C 20 48, 12 55, -2 62" 
+              fill="none" stroke="url(#goldDetails)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+
+        <!-- Closed Eye & Feminine Eyelash Stroke -->
+        <path d="M 18 -16 C 21 -14, 25 -14, 28 -17" 
+              fill="none" stroke="url(#goldDetails)" stroke-width="2.6" stroke-linecap="round" />
+        <path d="M 27 -17 L 30 -19" 
+              fill="none" stroke="url(#goldDetails)" stroke-width="1.8" stroke-linecap="round" />
+
+        <!-- Graceful Eyebrow Curve -->
+        <path d="M 15 -25 C 20 -28, 26 -27, 30 -22" 
+              fill="none" stroke="url(#goldDetails)" stroke-width="2" stroke-linecap="round" />
+      </g>
+
+      <!-- BOTANICAL GOLDEN LEAF WITH VEIN (Lower right of C) -->
+      <g transform="translate(645, 445) rotate(-35)">
+        <!-- Leaf Blade -->
+        <path d="M 0 -35 
+                 C 22 -20, 26 15, 0 35 
+                 C -26 15, -22 -20, 0 -35 Z" 
+              fill="url(#goldDetails)" 
+              stroke="#B58326" stroke-width="1.5" />
+        <!-- Leaf Center Stem / Vein -->
+        <path d="M 0 -32 L 0 32" stroke="#FFF0C2" stroke-width="2" stroke-linecap="round" opacity="0.9" />
+        <!-- Leaf delicate side veins -->
+        <path d="M 0 -12 L 8 -5 M 0 5 L 9 12 M 0 -12 L -8 -5 M 0 5 L -9 12" stroke="#FFF0C2" stroke-width="1.2" opacity="0.75" />
+      </g>
+
+      <!-- 3D METALLIC GOLD SERIF "S" MONOGRAM (Front & Center) -->
+      <g id="letterS">
+        <!-- Main 3D S Monogram Path -->
+        <path d="M 488 238 
+                 C 502 225, 510 215, 498 208
+                 C 480 200, 420 202, 365 240
+                 C 310 280, 298 335, 335 385
+                 C 365 425, 440 435, 475 460
+                 C 520 492, 518 538, 470 562
+                 C 415 590, 345 565, 305 520
+                 C 300 514, 292 518, 295 526
+                 C 310 568, 365 605, 435 605
+                 C 515 605, 575 558, 575 488
+                 C 575 422, 515 390, 452 360
+                 C 390 330, 362 298, 372 260
+                 C 382 225, 428 215, 470 230
+                 C 482 234, 485 242, 488 238 Z" 
+              fill="url(#goldS)" />
+        
+        <!-- S Monogram Specular Edge Highlight -->
+        <path d="M 498 208
+                 C 480 200, 420 202, 365 240
+                 C 310 280, 298 335, 335 385
+                 C 365 425, 440 435, 475 460
+                 C 520 492, 518 538, 470 562
+                 C 415 590, 345 565, 305 520" 
+              fill="none" stroke="#FFF6D8" stroke-width="2.5" opacity="0.85" />
+        
+        <!-- Beveled shadow line on S inner curve -->
+        <path d="M 435 605
+                 C 515 605, 575 558, 575 488
+                 C 575 422, 515 390, 452 360"
+              fill="none" stroke="#7A5210" stroke-width="3" opacity="0.6" />
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================================== -->
+  
+</svg>

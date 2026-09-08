@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { CATEGORIES_DATA } from '../../data/mockData';
 import { ScreenName } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface CategoriesScreenProps {
   onNavigate: (screen: ScreenName) => void;
@@ -22,6 +23,22 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
   onNavigate,
   onSelectCategoryFilter,
 }) => {
+  const { t, language } = useLanguage();
+
+  const getCategoryTitle = (catId: string, defaultTitle: string) => {
+    switch (catId) {
+      case 'makeup': return t.catMakeup;
+      case 'skincare': return t.catSkincare;
+      case 'haircare': return t.catHaircare;
+      case 'fragrance': return t.catFragrance;
+      case 'beauty_tools': return t.catBeautyTools;
+      case 'personal_care': return t.catPersonalCare;
+      case 'wedding': return t.catWedding;
+      case 'groom': return t.catGroom;
+      default: return defaultTitle;
+    }
+  };
+
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'Sparkles':
@@ -59,10 +76,10 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
       {/* Header */}
       <div className="sticky top-0 bg-white/95 backdrop-blur-md z-30 px-4 py-3.5 border-b border-[#E8D5C4]/60">
         <h2 className="font-serif text-lg font-bold text-[#4A154B] text-center">
-          Cosmetic Collections
+          {language === 'hi' ? 'सौंदर्य उत्पाद श्रेणियां' : 'Cosmetic Collections'}
         </h2>
         <p className="text-[10px] text-gray-500 text-center tracking-wide">
-          Curated Luxury Formulations for Ceremonies & Daily Radiance
+          {language === 'hi' ? 'शादी, समारोह एवं दैनिक चमक के लिए शुद्ध फॉर्मूलेशन' : 'Curated Luxury Formulations for Ceremonies & Daily Radiance'}
         </p>
       </div>
 
@@ -70,7 +87,7 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
       <div className="p-4 space-y-3">
         <div className="flex items-center space-x-1 text-xs font-bold uppercase tracking-wider text-[#4A154B]">
           <Sparkles className="w-3.5 h-3.5 text-[#B76E79]" />
-          <span>Curated Ceremonial Edit</span>
+          <span>{language === 'hi' ? 'शाही उत्सव संग्रह' : 'Curated Ceremonial Edit'}</span>
         </div>
 
         {/* Wedding Collection Highlight Card */}
@@ -82,16 +99,16 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
           <div className="flex items-center justify-between relative z-10">
             <div className="space-y-1">
               <span className="text-[9px] font-bold uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded-full">
-                Bridal & Ceremony
+                {language === 'hi' ? 'दुल्हन व समारोह' : 'Bridal & Ceremony'}
               </span>
               <h3 className="font-serif text-lg font-bold">
-                Wedding Collection
+                {t.catWedding}
               </h3>
               <p className="text-[11px] text-rose-100 max-w-[200px]">
-                Trousseau vanity sets, herbal sindoor, and 24K gold illuminators.
+                {language === 'hi' ? 'वैनिटी सेट्स, हर्बल सिंदूर, और 24K गोल्ड इल्यूमिनेटर।' : 'Trousseau vanity sets, herbal sindoor, and 24K gold illuminators.'}
               </p>
               <div className="pt-2 flex items-center space-x-1.5 text-xs font-bold">
-                <span>Explore Bridal Vault</span>
+                <span>{language === 'hi' ? 'वेडिंग वॉल्ट देखें' : 'Explore Bridal Vault'}</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
@@ -110,16 +127,16 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
           <div className="flex items-center justify-between relative z-10">
             <div className="space-y-1">
               <span className="text-[9px] font-bold uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded-full">
-                Gentleman Care
+                {language === 'hi' ? 'पुरुष सौंदर्य एवं दाढ़ी केयर' : 'Gentleman Care'}
               </span>
               <h3 className="font-serif text-lg font-bold">
-                Groom Collection
+                {t.catGroom}
               </h3>
               <p className="text-[11px] text-[#E8D5C4] max-w-[200px]">
-                Pre-wedding beard care, Mysore sandalwood shaving & royal oud.
+                {language === 'hi' ? 'दाढ़ी केयर, मैसूर चंदन शेविंग व शाही इत्र।' : 'Pre-wedding beard care, Mysore sandalwood shaving & royal oud.'}
               </p>
               <div className="pt-2 flex items-center space-x-1.5 text-xs font-bold text-[#E8D5C4]">
-                <span>Explore Groom Trunk</span>
+                <span>{language === 'hi' ? 'ग्रूम ट्रंक देखें' : 'Explore Groom Trunk'}</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
@@ -133,7 +150,7 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
       {/* Grid of All Standard Categories */}
       <div className="px-4 mt-2">
         <h4 className="text-xs font-bold uppercase tracking-wider text-[#4A154B] mb-3">
-          Explore All Categories
+          {language === 'hi' ? 'सभी श्रेणियां देखें' : 'Explore All Categories'}
         </h4>
 
         <div className="grid grid-cols-2 gap-3">
@@ -149,7 +166,7 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
                   {getIcon(category.icon)}
                 </div>
                 <h5 className="font-serif text-sm font-bold text-gray-900 leading-snug group-hover:text-[#4A154B] transition-colors">
-                  {category.title}
+                  {getCategoryTitle(category.id, category.title)}
                 </h5>
                 <p className="text-[10px] text-gray-400 mt-0.5 line-clamp-1">
                   {category.subtitle}
@@ -158,7 +175,7 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
 
               <div className="mt-3 pt-2 border-t border-[#EFE8ED] flex items-center justify-between text-[10px]">
                 <span className="font-bold text-[#B76E79]">
-                  {category.itemCount}+ Products
+                  {category.itemCount}+ {language === 'hi' ? 'उत्पाद' : 'Products'}
                 </span>
                 <ArrowRight className="w-3 h-3 text-gray-400 group-hover:text-[#4A154B] transition-colors" />
               </div>

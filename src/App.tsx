@@ -26,6 +26,7 @@ import { AdminAddProductModal } from './components/AdminAddProductModal';
 import { FlutterCodeViewerModal } from './components/FlutterCodeViewerModal';
 import { FirebaseArchitectureModal } from './components/FirebaseArchitectureModal';
 import { NotificationDrawer } from './components/NotificationDrawer';
+import { NavigationDrawer } from './components/NavigationDrawer';
 import { InvoiceModal } from './components/InvoiceModal';
 
 // Screens
@@ -98,6 +99,7 @@ export default function App() {
   const [isFlutterModalOpen, setIsFlutterModalOpen] = useState(false);
   const [isFirebaseModalOpen, setIsFirebaseModalOpen] = useState(false);
   const [isNotificationDrawerOpen, setIsNotificationDrawerOpen] = useState(false);
+  const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
   const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
   const [selectedInvoiceOrder, setSelectedInvoiceOrder] = useState<Order | null>(null);
   const [paymentStatusOutcome, setPaymentStatusOutcome] = useState<{
@@ -248,6 +250,12 @@ export default function App() {
   const handleOpenInvoice = (order: Order) => {
     setSelectedInvoiceOrder(order);
     setIsInvoiceModalOpen(true);
+  };
+
+  const handleLogout = async () => {
+    await firebaseAuthService.signOut();
+    setUser(firebaseAuthService.getCurrentUser());
+    setActiveScreen('login');
   };
 
   const handlePlaceOrder = (newOrder: Order, paymentRecord?: PaymentRecord) => {
@@ -625,6 +633,7 @@ export default function App() {
                 cartProductIds={cartProductIds}
                 unreadNotificationCount={unreadNotificationCount}
                 onOpenNotifications={() => setIsNotificationDrawerOpen(true)}
+                onOpenNavDrawer={() => setIsNavDrawerOpen(true)}
               />
             )}
 
@@ -866,6 +875,18 @@ export default function App() {
           setIsNotificationDrawerOpen(false);
         }}
         onTriggerTestPush={handleTriggerTestPush}
+      />
+
+      {/* OFFICIAL NAVIGATION DRAWER */}
+      <NavigationDrawer
+        isOpen={isNavDrawerOpen}
+        onClose={() => setIsNavDrawerOpen(false)}
+        activeScreen={activeScreen}
+        onNavigate={(scr) => setActiveScreen(scr)}
+        user={user}
+        cartCount={cartCount}
+        wishlistCount={wishlistIds.length}
+        onLogout={handleLogout}
       />
     </div>
   );

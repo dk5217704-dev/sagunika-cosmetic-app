@@ -304,15 +304,168 @@ export const INITIAL_PRODUCTS: Product[] = [
     howToUse: 'Warm the oil and massage into roots with circular motions. Leave for at least 1 hour or overnight before washing.',
     shadesOrSizes: ['200ml Glass Flask with Comb Applicator'],
     stockQuantity: 44,
-    tags: ['Hair Oil', 'Hair Fall', 'Ayurvedic'],
+    tags: ['Hair Oil', 'Hair Fall', 'Ayurvedic', 'Haircare'],
     occasions: ['daily', 'festive']
+  },
+  // Beauty Tools
+  {
+    id: 'prod-bt1',
+    name: '24K Rose Gold Pro 12-Piece Sculpting Brush Suite',
+    brand: 'Sagunika Tools',
+    subtitle: 'Micro-Silk Vegan Bristles with Weighted Metallic Stems',
+    price: 3499,
+    originalPrice: 4999,
+    discountPercentage: 30,
+    rating: 4.9,
+    reviewCount: 184,
+    category: 'beauty_tools',
+    collection: 'general',
+    isFeatured: true,
+    images: [
+      'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&auto=format&fit=crop&q=80'
+    ],
+    description: 'An elite 12-piece ceremonial brush collection engineered with ultra-soft hypoallergenic nanofibers for streak-free foundation, seamless contouring, and luminous eyeshadow blending.',
+    keyIngredients: ['Dermasafe Vegan Nanofibers', 'Anodized Rose Gold Ferrules', 'Sustainably Harvested Wood Handles'],
+    howToUse: 'Use denser brushes for creams and liquid illuminators; fluffier brushes for powders and cheek blushes.',
+    shadesOrSizes: ['12-Piece Deluxe Vault with Travel Roll', '6-Piece Essential Kit'],
+    stockQuantity: 28,
+    tags: ['Brushes', 'Beauty Tools', 'Professional', 'Vegan'],
+    occasions: ['daily', 'wedding', 'reception']
+  },
+  {
+    id: 'prod-bt2',
+    name: 'Xiuyan Jade Vibrating Facial Roller & Gua Sha Duo',
+    brand: 'Sagunika Tools',
+    subtitle: '6,000 Sonic Vibrations / Min for Lymphatic Sculpting',
+    price: 2199,
+    originalPrice: 2999,
+    discountPercentage: 26,
+    rating: 4.8,
+    reviewCount: 247,
+    category: 'beauty_tools',
+    collection: 'general',
+    images: [
+      'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&auto=format&fit=crop&q=80'
+    ],
+    description: 'Authentic grade-A jade gemstone paired with micro-sonic pulse technology that visibly lifts cheekbones, reduces morning puffiness, and amplifies serum absorption.',
+    keyIngredients: ['100% Genuine Certified Xiuyan Jade', 'Rechargeable Sonic Micro-Motor'],
+    howToUse: 'Apply 3 drops of Kumkumadi oil. Glide roller upwards along jawline, cheekbones, and brow bone for 5 minutes.',
+    shadesOrSizes: ['Imperial Emerald Jade', 'Rose Quartz Edition'],
+    stockQuantity: 36,
+    tags: ['Gua Sha', 'Jade Roller', 'Beauty Tools', 'Face Sculpt'],
+    occasions: ['daily', 'wedding']
+  },
+  // Personal Care
+  {
+    id: 'prod-pc1',
+    name: 'Sandalwood & Velvet Cashmere Body Soufflé',
+    brand: 'Sagunika Bath & Body',
+    subtitle: '24-Hour Deep Barrier Nourishment with Mysore Sandalwood',
+    price: 1699,
+    originalPrice: 2299,
+    discountPercentage: 26,
+    rating: 4.8,
+    reviewCount: 310,
+    category: 'personal_care',
+    collection: 'general',
+    images: [
+      'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&auto=format&fit=crop&q=80'
+    ],
+    description: 'A whipped, melt-into-skin body crème infused with authentic Mysore sandalwood oil, organic raw shea butter, and golden jojoba for satin softness and a delicate royal scent.',
+    keyIngredients: ['Mysore Sandalwood Oil', 'Raw African Shea Butter', 'Golden Jojoba', 'Vitamin B5'],
+    howToUse: 'Massage all over body immediately after bath or shower onto damp skin.',
+    shadesOrSizes: ['250g Glass Jar', '500g Grand Jar'],
+    stockQuantity: 40,
+    tags: ['Body Butter', 'Personal Care', 'Moisturizer', 'Sandalwood'],
+    occasions: ['daily', 'wedding', 'festive']
+  },
+  {
+    id: 'prod-pc2',
+    name: 'Himalayan Pink Salt & Wild Rose Polishing Body Scrub',
+    brand: 'Sagunika Bath & Body',
+    subtitle: 'Micro-Exfoliating Mineral Scrub with Essential Oils',
+    price: 1399,
+    originalPrice: 1899,
+    discountPercentage: 26,
+    rating: 4.7,
+    reviewCount: 198,
+    category: 'personal_care',
+    collection: 'general',
+    images: [
+      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80'
+    ],
+    description: 'Detoxifying Himalayan crystal salts suspended in sweet almond and wild rose oil that buffs away dullness, enhances blood circulation, and imparts an unmissable bridal radiance.',
+    keyIngredients: ['Pure Himalayan Pink Salt Crystals', 'Wild Rose Essential Oil', 'Sweet Almond Oil'],
+    howToUse: 'Gently buff onto damp skin in circular motions. Rinse with warm water.',
+    shadesOrSizes: ['300g Luxury Tub'],
+    stockQuantity: 32,
+    tags: ['Body Scrub', 'Personal Care', 'Exfoliator', 'Rose'],
+    occasions: ['daily', 'haldi', 'wedding']
   }
 ];
 
 export const CATEGORIES_DATA = [
   {
+    id: 'makeup',
+    title: 'Makeup',
+    subtitle: 'Kissproof Matte, Foundation & Illuminators',
+    itemCount: 42,
+    icon: 'Sparkles',
+    color: 'from-rose-500 to-pink-600',
+    image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'skincare',
+    title: 'Skincare',
+    subtitle: 'Youth Nectars, Saffron Oils & Crèmes',
+    itemCount: 36,
+    icon: 'Droplets',
+    color: 'from-rose-600 to-amber-600',
+    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'haircare',
+    title: 'Hair Care',
+    subtitle: 'Root Therapy, Hair Oils & Spa Restoratives',
+    itemCount: 28,
+    icon: 'HeartHandshake',
+    color: 'from-purple-700 to-indigo-800',
+    image: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'fragrance',
+    title: 'Fragrance',
+    subtitle: 'Imperial Oud, Bulgarian Rose & Attars',
+    itemCount: 22,
+    icon: 'Feather',
+    color: 'from-purple-900 to-fuchsia-800',
+    image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'beauty_tools',
+    title: 'Beauty Tools',
+    subtitle: 'Sculpting Brushes, Jade Rollers & Blenders',
+    itemCount: 18,
+    icon: 'Crown',
+    color: 'from-amber-600 to-rose-500',
+    image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'personal_care',
+    title: 'Personal Care',
+    subtitle: 'Body Soufflés, Mineral Scrubs & Bath Luxury',
+    itemCount: 25,
+    icon: 'Leaf',
+    color: 'from-emerald-700 to-teal-800',
+    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&auto=format&fit=crop&q=80'
+  },
+  {
     id: 'wedding',
-    title: 'Wedding Collection',
+    title: 'Wedding Vault',
     subtitle: 'Bridal Trousseau & Ceremonial Vanity',
     itemCount: 24,
     icon: 'Sparkles',
@@ -321,57 +474,12 @@ export const CATEGORIES_DATA = [
   },
   {
     id: 'groom',
-    title: 'Groom Collection',
+    title: 'Royal Groom',
     subtitle: 'Gentleman Grooming & Beard Care',
     itemCount: 18,
     icon: 'Crown',
     color: 'from-purple-900 to-indigo-800',
     image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=800&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'skincare',
-    title: 'Luxury Skincare',
-    subtitle: 'Youth Nectars & Barrier Restoring Crèmes',
-    itemCount: 36,
-    icon: 'Droplets',
-    color: 'from-rose-500 to-pink-600',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'makeup',
-    title: 'Cosmetics & Makeup',
-    subtitle: 'Kissproof Matte, Illuminators & Primers',
-    itemCount: 42,
-    icon: 'Smile',
-    color: 'from-fuchsia-600 to-rose-500',
-    image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=800&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'fragrance',
-    title: 'High Perfumery & Attars',
-    subtitle: 'Imperial Oud, Bulgarian Rose & Amber',
-    itemCount: 15,
-    icon: 'Feather',
-    color: 'from-purple-800 to-fuchsia-900',
-    image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'ayurvedic',
-    title: 'Organic & Ayurvedic',
-    subtitle: 'Kumkumadi, Sacred Herbs & Saffron Nectar',
-    itemCount: 22,
-    icon: 'Leaf',
-    color: 'from-emerald-700 to-teal-800',
-    image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=800&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'haircare',
-    title: 'Haircare & Spa',
-    subtitle: 'Root Therapy & Salon Silk Restoratives',
-    itemCount: 19,
-    icon: 'HeartHandshake',
-    color: 'from-violet-700 to-purple-900',
-    image: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&auto=format&fit=crop&q=80'
   }
 ];
 

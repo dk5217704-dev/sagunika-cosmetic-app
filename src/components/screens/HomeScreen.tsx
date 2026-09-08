@@ -12,11 +12,14 @@ import {
   Award,
   Check,
   SlidersHorizontal,
-  PackageCheck
+  PackageCheck,
+  Menu,
 } from 'lucide-react';
 import { Product, ScreenName } from '../../types';
 import { ProductCatalogControls, FilterState } from '../ProductCatalogControls';
 import { filterAndSortProducts } from '../../utils/productFilters';
+import { SagunikaLogo } from '../SagunikaLogo';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface HomeScreenProps {
   products: Product[];
@@ -28,6 +31,7 @@ interface HomeScreenProps {
   cartProductIds: string[];
   unreadNotificationCount: number;
   onOpenNotifications: () => void;
+  onOpenNavDrawer?: () => void;
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
@@ -40,10 +44,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   cartProductIds,
   unreadNotificationCount,
   onOpenNotifications,
+  onOpenNavDrawer,
 }) => {
+  const { t, language } = useLanguage();
   const [filters, setFilters] = useState<FilterState>({
     searchQuery: '',
     category: 'all',
+    brand: 'all',
     priceRange: 'all',
     occasion: 'all',
     sortBy: 'featured',
@@ -58,25 +65,19 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* Top Luxury App Bar */}
       <header className="sticky top-0 bg-white/95 backdrop-blur-md z-30 px-4 py-3 border-b border-[#E8D5C4]/60 shadow-xs">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#B76E79] to-[#4A154B] p-[2px] shadow-xs">
-              <div className="w-full h-full rounded-full bg-white flex items-center justify-center font-serif font-bold text-xs text-[#4A154B]">
-                SC
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center space-x-1.5">
-                <span className="font-serif text-base font-extrabold tracking-wider text-[#4A154B]">
-                  SAGUNIKA
-                </span>
-                <span className="text-[10px] font-bold text-[#B76E79] tracking-widest uppercase">
-                  COSMETIC
-                </span>
-              </div>
-              <p className="text-[9px] text-gray-500 font-medium tracking-tight">
-                Beauty That Inspires Confidence • Pure Gold & Rose
-              </p>
-            </div>
+          <div className="flex items-center space-x-2">
+            {onOpenNavDrawer && (
+              <button
+                type="button"
+                id="btn-open-nav-drawer"
+                onClick={onOpenNavDrawer}
+                className="p-1.5 -ml-1.5 rounded-xl text-gray-700 hover:bg-[#FAF4EE] hover:text-[#111111] transition-colors cursor-pointer"
+                title="Navigation Menu"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            )}
+            <SagunikaLogo size="sm" showSubtitle={true} />
           </div>
 
           <div className="flex items-center space-x-1">
@@ -84,7 +85,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               id="btn-nav-wishlist-header"
               onClick={() => onNavigate('wishlist')}
               className="relative p-2 rounded-full hover:bg-[#FAF0F3] text-[#4A154B] transition-colors"
-              title="Wishlist"
+              title={t.wishlist}
             >
               <Heart className="w-5 h-5 text-[#8C4A5A]" />
               {wishlistIds.length > 0 && (
@@ -118,13 +119,15 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           <div className="relative z-10 max-w-sm space-y-2">
             <div className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-[#B76E79]/80 backdrop-blur-xs text-[10px] font-bold tracking-wider uppercase text-white shadow-xs">
               <Sparkles className="w-3 h-3" />
-              <span>Wedding Edition 2026</span>
+              <span>{language === 'hi' ? 'शाही विवाह संस्करण 2026' : 'Wedding Edition 2026'}</span>
             </div>
             <h3 className="font-serif text-xl font-bold leading-tight">
-              The Royal Bridal Trousseau Vault
+              {language === 'hi' ? 'द रॉयल ब्राइडल ट्रूसो वॉल्ट' : 'The Royal Bridal Trousseau Vault'}
             </h3>
             <p className="text-[11px] text-[#E8D5C4] line-clamp-2">
-              Complete 24K Gold & Rose Velvet Ceremonial essentials for bridal radiance and royal groom confidence.
+              {language === 'hi'
+                ? 'शादी के समारोह व दूल्हे के शाही रूप के लिए 24K गोल्ड व रोज़ मखमली सौंदर्य सामग्री।'
+                : 'Complete 24K Gold & Rose Velvet Ceremonial essentials for bridal radiance and royal groom confidence.'}
             </p>
             <div className="pt-1 flex flex-wrap gap-2">
               <button
@@ -132,7 +135,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 onClick={() => onNavigate('wedding')}
                 className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-white text-[#4A154B] text-xs font-bold shadow-xs hover:bg-[#FAF0F3] active:scale-95 transition-all"
               >
-                <span>Shop Bridal Edit</span>
+                <span>{language === 'hi' ? 'दुल्हन संग्रह देखें' : 'Shop Bridal Edit'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
               <button
@@ -140,7 +143,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 onClick={() => onNavigate('groom')}
                 className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-white/15 border border-white/30 text-white text-xs font-bold hover:bg-white/25 active:scale-95 transition-all"
               >
-                <span>Groom Trunk</span>
+                <span>{language === 'hi' ? 'ग्रूम ट्रंक' : 'Groom Trunk'}</span>
               </button>
             </div>
           </div>
@@ -159,16 +162,16 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             <Sparkles className="w-4 h-4" />
           </div>
           <span className="text-[9px] font-bold uppercase tracking-wider text-[#B76E79] block">
-            Exclusive
+            {language === 'hi' ? 'विशेष' : 'Exclusive'}
           </span>
           <h4 className="font-serif text-sm font-bold text-[#4A154B] leading-tight">
-            Wedding Collection
+            {t.catWedding}
           </h4>
           <p className="text-[10px] text-gray-500 mt-0.5">
-            Bridal Trousseau & Sindoor Sets
+            {language === 'hi' ? 'ब्राइडल ट्रूसो व हर्बल सिंदूर' : 'Bridal Trousseau & Sindoor Sets'}
           </p>
           <div className="mt-2 text-[10px] font-bold text-[#8C4A5A] flex items-center space-x-1">
-            <span>Explore Bridal Vault</span>
+            <span>{language === 'hi' ? 'संग्रह देखें' : 'Explore Bridal Vault'}</span>
             <ArrowRight className="w-3 h-3" />
           </div>
         </div>
@@ -183,16 +186,16 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             <Crown className="w-4 h-4" />
           </div>
           <span className="text-[9px] font-bold uppercase tracking-wider text-[#67226B] block">
-            Gentleman's Edit
+            {language === 'hi' ? 'शाही पुरुष' : "Gentleman's Edit"}
           </span>
           <h4 className="font-serif text-sm font-bold text-[#2D0C34] leading-tight">
-            Groom Collection
+            {t.catGroom}
           </h4>
           <p className="text-[10px] text-gray-500 mt-0.5">
-            Beard Elixirs, Oud & Aftershaves
+            {language === 'hi' ? 'दाढ़ी अमृत, इत्र और आफ्टरशेव' : 'Beard Elixirs, Oud & Aftershaves'}
           </p>
           <div className="mt-2 text-[10px] font-bold text-[#4A154B] flex items-center space-x-1">
-            <span>Explore Groom Trunk</span>
+            <span>{language === 'hi' ? 'ट्रंक देखें' : 'Explore Groom Trunk'}</span>
             <ArrowRight className="w-3 h-3" />
           </div>
         </div>
@@ -206,15 +209,15 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </div>
           <div>
             <span className="text-xs font-bold text-[#4A154B] block">
-              Sagunika Flash Sale
+              {language === 'hi' ? 'सगुनिक़ा फ़्लैश सेल' : 'Sagunika Flash Sale'}
             </span>
             <span className="text-[10px] text-gray-500">
-              Extra 20% off with code <strong className="text-[#B76E79]">SAGUNIKA20</strong>
+              {language === 'hi' ? 'कूपन' : 'Extra 20% off with code'} <strong className="text-[#B76E79]">SAGUNIKA20</strong>
             </span>
           </div>
         </div>
         <span className="text-[10px] font-bold px-2 py-1 rounded-md bg-white border border-[#E8B4B8] text-[#8C4A5A]">
-          Ends in 06:45:12
+          {language === 'hi' ? 'समाप्ति: 06:45:12' : 'Ends in 06:45:12'}
         </span>
       </div>
 
@@ -236,16 +239,19 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               <PackageCheck className="w-7 h-7" />
             </div>
             <h4 className="font-serif text-base font-bold text-[#4A154B]">
-              No Formulations Match Your Filter
+              {language === 'hi' ? 'कोई उत्पाद मेल नहीं खाता' : 'No Formulations Match Your Filter'}
             </h4>
             <p className="text-xs text-gray-500 max-w-sm mx-auto">
-              We couldn't find products matching the selected category, price band, or occasion. Try adjusting your search or clearing active filters.
+              {language === 'hi'
+                ? 'चयनित फ़िल्टर या खोज के अनुसार उत्पाद नहीं मिला। कृपया फ़िल्टर बदलें।'
+                : "We couldn't find products matching the selected category, price band, or brand. Try adjusting your search or clearing active filters."}
             </p>
             <button
               onClick={() =>
                 setFilters({
                   searchQuery: '',
                   category: 'all',
+                  brand: 'all',
                   priceRange: 'all',
                   occasion: 'all',
                   sortBy: 'featured',
@@ -254,7 +260,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               }
               className="px-4 py-2 rounded-xl bg-[#4A154B] text-white text-xs font-bold shadow-xs hover:bg-[#67226B]"
             >
-              Reset All Filters
+              {t.resetFilters}
             </button>
           </div>
         ) : (
@@ -283,12 +289,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                     <div className="absolute top-2 left-2 flex flex-col gap-1 z-10">
                       {product.collection === 'wedding' && (
                         <span className="px-1.5 py-0.5 rounded-md bg-[#B76E79] text-white text-[8px] font-bold uppercase tracking-wider shadow-2xs">
-                          Wedding
+                          {t.catWedding}
                         </span>
                       )}
                       {product.collection === 'groom' && (
                         <span className="px-1.5 py-0.5 rounded-md bg-[#4A154B] text-white text-[8px] font-bold uppercase tracking-wider shadow-2xs">
-                          Groom
+                          {t.catGroom}
                         </span>
                       )}
                       {product.discountPercentage > 0 && (
@@ -334,7 +340,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
                         {product.stockQuantity < 20 && (
                           <span className="text-[9px] font-semibold text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded-sm">
-                            {product.stockQuantity} left
+                            {product.stockQuantity} {language === 'hi' ? 'बचे हैं' : 'left'}
                           </span>
                         )}
                       </div>
@@ -393,23 +399,35 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* Brand Trust Assurances */}
       <div className="mt-8 mx-4 p-4 rounded-2xl bg-white border border-[#E8D5C4]/70 space-y-3">
         <h4 className="font-serif text-xs font-bold uppercase tracking-wider text-[#4A154B] text-center">
-          Sagunika Beauty Standard
+          {language === 'hi' ? 'सगुनिक़ा सौंदर्य मानक' : 'Sagunika Beauty Standard'}
         </h4>
         <div className="grid grid-cols-3 gap-2 text-center">
           <div className="flex flex-col items-center p-2 rounded-lg bg-[#FAF8F9]">
             <Award className="w-4 h-4 text-[#B76E79] mb-1" />
-            <span className="text-[10px] font-bold text-gray-800">100% Genuine</span>
-            <span className="text-[8px] text-gray-400">Authentic Batch</span>
+            <span className="text-[10px] font-bold text-gray-800">
+              {language === 'hi' ? '100% असली' : '100% Genuine'}
+            </span>
+            <span className="text-[8px] text-gray-400">
+              {language === 'hi' ? 'प्रमाणित बैच' : 'Authentic Batch'}
+            </span>
           </div>
           <div className="flex flex-col items-center p-2 rounded-lg bg-[#FAF8F9]">
             <Sparkles className="w-4 h-4 text-[#4A154B] mb-1" />
-            <span className="text-[10px] font-bold text-gray-800">24K Radiance</span>
-            <span className="text-[8px] text-gray-400">Noble Extracts</span>
+            <span className="text-[10px] font-bold text-gray-800">
+              {language === 'hi' ? '24K चमक' : '24K Radiance'}
+            </span>
+            <span className="text-[8px] text-gray-400">
+              {language === 'hi' ? 'शाही अर्क' : 'Noble Extracts'}
+            </span>
           </div>
           <div className="flex flex-col items-center p-2 rounded-lg bg-[#FAF8F9]">
             <ShieldCheck className="w-4 h-4 text-[#B76E79] mb-1" />
-            <span className="text-[10px] font-bold text-gray-800">Safe Formula</span>
-            <span className="text-[8px] text-gray-400">Derm Tested</span>
+            <span className="text-[10px] font-bold text-gray-800">
+              {language === 'hi' ? 'सुरक्षित फॉर्मूला' : 'Safe Formula'}
+            </span>
+            <span className="text-[8px] text-gray-400">
+              {language === 'hi' ? 'त्वचा परीक्षित' : 'Derm Tested'}
+            </span>
           </div>
         </div>
       </div>

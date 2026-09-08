@@ -14,6 +14,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { Product, ScreenName } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ProductDetailsScreenProps {
   product: Product;
@@ -34,6 +35,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
   onBuyNow,
   onNavigate,
 }) => {
+  const { t, language } = useLanguage();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedShade, setSelectedShade] = useState(product.shadesOrSizes[0] || '');
   const [quantity, setQuantity] = useState(1);
@@ -69,6 +71,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
           <button
             onClick={() => onToggleWishlist(product.id)}
             className="p-2 rounded-full hover:bg-[#FAF0F3] text-gray-500 transition-colors"
+            title={t.wishlist}
           >
             <Heart
               className={`w-5 h-5 ${
@@ -92,7 +95,11 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
           {product.collection && (
             <div className="absolute top-3 left-3">
               <span className="px-2 py-1 rounded-md bg-[#4A154B] text-white text-[10px] font-bold uppercase tracking-wider shadow-xs">
-                {product.collection === 'wedding' ? 'Bridal Edition' : product.collection === 'groom' ? 'Groom Edition' : 'Signature'}
+                {product.collection === 'wedding'
+                  ? (language === 'hi' ? 'दुल्हन संस्करण' : 'Bridal Edition')
+                  : product.collection === 'groom'
+                  ? (language === 'hi' ? 'ग्रूम संस्करण' : 'Groom Edition')
+                  : 'Signature'}
               </span>
             </div>
           )}
@@ -100,7 +107,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
           {/* 100% Genuine Tag */}
           <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-full text-[10px] font-bold text-gray-800 flex items-center space-x-1 shadow-xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#B76E79]" />
-            <span>100% Authentic Formula</span>
+            <span>{language === 'hi' ? '100% प्रामाणिक फॉर्मूला' : '100% Authentic Formula'}</span>
           </div>
         </div>
 
@@ -131,9 +138,11 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
             <Star className="w-3.5 h-3.5 fill-current" />
           </div>
           <span className="text-xs font-bold text-gray-800">{product.rating}</span>
-          <span className="text-xs text-gray-400">({product.reviewCount} Reviews)</span>
+          <span className="text-xs text-gray-400">({product.reviewCount} {language === 'hi' ? 'समीक्षाएं' : 'Reviews'})</span>
           <span className="text-gray-300">•</span>
-          <span className="text-[11px] font-semibold text-emerald-600">In Stock ({product.stockQuantity} Left)</span>
+          <span className="text-[11px] font-semibold text-emerald-600">
+            {t.inStockOnly} ({product.stockQuantity} {language === 'hi' ? 'शेष' : 'Left'})
+          </span>
         </div>
 
         <h1 className="font-serif text-xl font-bold text-[#2D0C34] leading-tight">
@@ -160,7 +169,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
           )}
         </div>
         <p className="text-[10px] text-gray-400 mt-0.5">
-          Inclusive of all luxury taxes • Free express shipping on this item
+          {language === 'hi' ? 'सभी कर शामिल • निःशुल्क त्वरित डिलीवरी' : 'Inclusive of all luxury taxes • Free express shipping on this item'}
         </p>
       </div>
 
@@ -169,7 +178,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
         <div className="p-4 bg-white mt-2 border-y border-[#E8D5C4]/50">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold text-[#4A154B] uppercase tracking-wider">
-              Select Shade / Size Variant:
+              {language === 'hi' ? 'शेड / साइज़ चुनें:' : 'Select Shade / Size Variant:'}
             </span>
             <span className="text-xs font-bold text-[#B76E79]">
               {selectedShade}
@@ -198,9 +207,9 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
       <div className="p-4 bg-white mt-2 border-y border-[#E8D5C4]/50">
         <div className="flex border-b border-gray-200">
           {[
-            { id: 'details', label: 'Overview' },
-            { id: 'ingredients', label: 'Key Ingredients' },
-            { id: 'how_to_use', label: 'How to Use' },
+            { id: 'details', label: language === 'hi' ? 'विवरण' : 'Overview' },
+            { id: 'ingredients', label: language === 'hi' ? 'प्रमुख सामग्री' : 'Key Ingredients' },
+            { id: 'how_to_use', label: language === 'hi' ? 'उपयोग विधि' : 'How to Use' },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -223,19 +232,19 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
               <div className="grid grid-cols-2 gap-2 pt-2">
                 <div className="flex items-center space-x-1.5 text-[11px] text-gray-700">
                   <Sparkles className="w-3.5 h-3.5 text-[#B76E79]" />
-                  <span>Dermatologist Approved</span>
+                  <span>{language === 'hi' ? 'त्वचा विशेषज्ञ अनुशंसित' : 'Dermatologist Approved'}</span>
                 </div>
                 <div className="flex items-center space-x-1.5 text-[11px] text-gray-700">
                   <Leaf className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>100% Cruelty Free</span>
+                  <span>{language === 'hi' ? '100% क्रूरता मुक्त' : '100% Cruelty Free'}</span>
                 </div>
                 <div className="flex items-center space-x-1.5 text-[11px] text-gray-700">
                   <Truck className="w-3.5 h-3.5 text-[#4A154B]" />
-                  <span>Next-Day Dispatch</span>
+                  <span>{language === 'hi' ? 'अगले दिन प्रेषण' : 'Next-Day Dispatch'}</span>
                 </div>
                 <div className="flex items-center space-x-1.5 text-[11px] text-gray-700">
                   <RotateCcw className="w-3.5 h-3.5 text-[#8C4A5A]" />
-                  <span>7 Days Return</span>
+                  <span>{language === 'hi' ? '7 दिन में वापसी' : '7 Days Return'}</span>
                 </div>
               </div>
             </div>
@@ -243,7 +252,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
 
           {activeTab === 'ingredients' && (
             <div className="space-y-2">
-              <p className="font-semibold text-gray-800">Precious Actives & Botanical Extracts:</p>
+              <p className="font-semibold text-gray-800">{language === 'hi' ? 'सक्रिय तत्व व वानस्पतिक अर्क:' : 'Precious Actives & Botanical Extracts:'}</p>
               <div className="flex flex-wrap gap-1.5">
                 {product.keyIngredients.map((ing, i) => (
                   <span
@@ -259,7 +268,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
 
           {activeTab === 'how_to_use' && (
             <div className="space-y-1.5">
-              <p className="font-semibold text-gray-800">Application Ritual:</p>
+              <p className="font-semibold text-gray-800">{language === 'hi' ? 'उपयोग की विधि:' : 'Application Ritual:'}</p>
               <p>{product.howToUse}</p>
             </div>
           )}
@@ -271,7 +280,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
         {addedToast && (
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#2E7D32] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center space-x-1 animate-bounce">
             <Check className="w-3.5 h-3.5" />
-            <span>Added to Cart!</span>
+            <span>{language === 'hi' ? 'कार्ट में जोड़ा गया!' : 'Added to Cart!'}</span>
           </div>
         )}
 
@@ -300,7 +309,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
             className="flex-1 py-3 px-3 rounded-xl border border-[#4A154B] text-[#4A154B] hover:bg-[#F3EAF4] font-bold text-xs flex items-center justify-center space-x-1.5 active:scale-95 transition-all"
           >
             <ShoppingBag className="w-4 h-4" />
-            <span>Add to Cart</span>
+            <span>{t.addToCart}</span>
           </button>
 
           {/* Buy Now */}
@@ -309,7 +318,7 @@ export const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
             onClick={handleBuyNow}
             className="flex-1 py-3 px-3 rounded-xl bg-gradient-to-r from-[#4A154B] via-[#67226B] to-[#4A154B] text-white font-bold text-xs shadow-md hover:opacity-95 active:scale-95 transition-all flex items-center justify-center space-x-1"
           >
-            <span>Buy Now</span>
+            <span>{t.buyNow}</span>
           </button>
         </div>
       </div>

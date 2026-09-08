@@ -29,10 +29,14 @@ import {
   Send,
   AlertCircle,
   CreditCard,
-  FileText
+  FileText,
+  Languages,
+  Globe
 } from 'lucide-react';
 import { User as UserType, ScreenName, Order, Address } from '../../types';
 import { firebaseAuthService, PRESET_AVATARS } from '../../services/firebaseAuth';
+import { useLanguage } from '../../context/LanguageContext';
+import { SagunikaLogo } from '../SagunikaLogo';
 
 interface ProfileScreenProps {
   user: UserType;
@@ -69,6 +73,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
   onReorder,
   onOpenInvoice,
 }) => {
+  const { language, setLanguage, t } = useLanguage();
   const isAdmin = user.role === 'admin';
   const [activeTab, setActiveTab] = useState<'overview' | 'orders' | 'addresses'>('overview');
 
@@ -193,13 +198,11 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
   return (
     <div id="screen-profile" className="pb-28 bg-[#FAF8F9] min-h-screen">
       {/* Header */}
-      <div className="sticky top-0 bg-white/95 backdrop-blur-md z-30 px-4 py-3 border-b border-[#E8D5C4]/60">
-        <h2 className="font-serif text-base font-bold text-[#4A154B] text-center">
-          Sagunika Patron Profile
-        </h2>
-        <p className="text-[10px] text-gray-500 text-center tracking-wide">
-          Firebase Authentication & Customer Identity
-        </p>
+      <div className="sticky top-0 bg-white/95 backdrop-blur-md z-30 px-4 py-2.5 border-b border-[#E8D5C4]/60 flex items-center justify-between">
+        <SagunikaLogo size="sm" showSubtitle={false} />
+        <span className="text-[10px] font-bold tracking-widest text-[#B88628] uppercase bg-[#FAF4EE] px-2.5 py-1 rounded-full border border-[#E8D5C4]">
+          {isAdmin ? 'Store Admin' : 'Patron Account'}
+        </span>
       </div>
 
       <div className="p-4 space-y-4">
@@ -507,6 +510,49 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
 
             {/* Quick Settings List */}
             <div className="bg-white rounded-2xl border border-[#E8D5C4]/70 divide-y divide-[#EFE8ED] shadow-2xs overflow-hidden">
+              {/* Language Switcher (English / हिंदी) */}
+              <div id="settings-language-toggle" className="p-3.5 flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 rounded-xl bg-[#F3EAF4] text-[#4A154B]">
+                    <Languages className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-gray-900 block">
+                      {language === 'hi' ? 'ऐप की भाषा (Language)' : 'App Language'}
+                    </span>
+                    <span className="text-[10px] text-gray-400">
+                      {language === 'hi' ? 'हिंदी और अंग्रेजी में तुरंत बदलें' : 'Switch between English & Hindi dynamically'}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center p-1 bg-[#FAF0F3] rounded-xl border border-[#E8B4B8]/40 space-x-1">
+                  <button
+                    type="button"
+                    id="btn-lang-en"
+                    onClick={() => setLanguage('en')}
+                    className={`px-2.5 py-1 text-[11px] font-bold rounded-lg transition-all cursor-pointer ${
+                      language === 'en'
+                        ? 'bg-[#4A154B] text-white shadow-2xs'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    English
+                  </button>
+                  <button
+                    type="button"
+                    id="btn-lang-hi"
+                    onClick={() => setLanguage('hi')}
+                    className={`px-2.5 py-1 text-[11px] font-bold rounded-lg transition-all cursor-pointer ${
+                      language === 'hi'
+                        ? 'bg-[#4A154B] text-white shadow-2xs'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    हिंदी
+                  </button>
+                </div>
+              </div>
+
               {/* Notifications Toggle */}
               <div className="p-3.5 flex items-center justify-between">
                 <div className="flex items-center space-x-3">
@@ -565,6 +611,28 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-gray-400" />
+              </div>
+            </div>
+
+            {/* OFFICIAL BRAND AUTHENTICITY BADGE & LOGO */}
+            <div className="rounded-2xl border border-[#E8D5C4] bg-gradient-to-b from-[#FAF4EE] via-[#FDFBF8] to-[#FAF4EE] p-5 text-center flex flex-col items-center justify-center space-y-2.5 shadow-2xs">
+              <div className="w-44 rounded-2xl bg-[#FAF4EE] border border-[#E8D5C4]/80 p-3 shadow-xs">
+                <img
+                  src="/assets/sagunika_logo.svg"
+                  alt="Official Sagunika Cosmetics Trademark"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+              <p className="text-[11px] font-serif italic text-[#7B2455]">
+                "Beauty That Inspires Confidence"
+              </p>
+              <div className="flex items-center space-x-2 text-[10px] text-gray-500 font-medium">
+                <span>Official Brand Flagship</span>
+                <span>•</span>
+                <span>ISO 9001:2015</span>
+                <span>•</span>
+                <span>Cruelty-Free</span>
               </div>
             </div>
           </div>

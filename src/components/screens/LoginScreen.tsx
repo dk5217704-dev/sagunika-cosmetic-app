@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { User } from '../../types';
 import { firebaseAuthService } from '../../services/firebaseAuth';
+import { SagunikaLogo } from '../SagunikaLogo';
 
 interface LoginScreenProps {
   initialMode?: 'login' | 'signup' | 'forgot' | 'phone';
@@ -214,19 +215,9 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
     >
       {/* Top Header */}
       <div>
-        <div className="flex items-center justify-between pb-4 border-b border-[#EFE8ED]">
+        <div className="flex items-center justify-between pb-4 border-b border-[#E8D5C4]/60">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#B76E79] to-[#4A154B] text-white flex items-center justify-center font-serif font-bold text-xs shadow-2xs">
-              SC
-            </div>
-            <div>
-              <span className="text-xs font-serif font-bold text-[#4A154B] tracking-wider block">
-                SAGUNIKA COSMETIC
-              </span>
-              <span className="text-[9px] text-[#B76E79] font-medium block">
-                Firebase Authentication Suite
-              </span>
-            </div>
+            <SagunikaLogo size="sm" showSubtitle={false} />
           </div>
           <button
             id="btn-skip-login"

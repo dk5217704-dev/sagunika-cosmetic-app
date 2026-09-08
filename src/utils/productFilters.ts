@@ -49,6 +49,13 @@ export function filterAndSortProducts(products: Product[], filters: FilterState)
       }
     }
 
+    // 2b. Brand Filter
+    if (filters.brand && filters.brand !== 'all') {
+      if (item.brand.toLowerCase() !== filters.brand.toLowerCase()) {
+        return false;
+      }
+    }
+
     // 3. Price Range Filter
     if (filters.priceRange !== 'all') {
       switch (filters.priceRange) {

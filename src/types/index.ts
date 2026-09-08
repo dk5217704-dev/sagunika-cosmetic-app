@@ -64,12 +64,14 @@ export interface StoreSettings {
 
 // 3. products
 export type CategoryType = 
+  | 'makeup'
+  | 'skincare'
+  | 'haircare'
+  | 'fragrance'
+  | 'beauty_tools'
+  | 'personal_care'
   | 'wedding'
   | 'groom'
-  | 'skincare'
-  | 'makeup'
-  | 'fragrance'
-  | 'haircare'
   | 'ayurvedic';
 
 export type SortOption =

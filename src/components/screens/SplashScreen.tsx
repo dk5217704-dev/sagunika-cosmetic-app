@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
 import { ScreenName } from '../../types';
+import { SagunikaLogo } from '../SagunikaLogo';
 
 interface SplashScreenProps {
   onContinue: (target: ScreenName) => void;
@@ -31,59 +32,42 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onContinue, isLogged
   return (
     <div
       id="screen-splash"
-      className="relative min-h-[640px] h-full flex flex-col items-center justify-between p-8 bg-gradient-to-b from-[#FAF8F9] via-[#FFFFFF] to-[#FDF7F8] text-center overflow-hidden select-none"
+      className="relative min-h-[640px] h-full flex flex-col items-center justify-between p-8 bg-gradient-to-b from-[#FAF4EE] via-[#FDFBF8] to-[#FAF4EE] text-center overflow-hidden select-none"
     >
-      {/* Background Decorative Rings */}
-      <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-br from-[#E8B4B8]/20 to-transparent blur-2xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-tr from-[#4A154B]/10 to-transparent blur-2xl pointer-events-none" />
+      {/* Background Decorative Gold Ambient Glows */}
+      <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-br from-[#EED48F]/25 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-tr from-[#D4A747]/20 to-transparent blur-3xl pointer-events-none" />
 
       {/* Top Brand Pill */}
       <div className="pt-6">
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#FAF0F3] border border-[#E8B4B8]/40 shadow-xs">
-          <Sparkles className="w-3.5 h-3.5 text-[#B76E79]" />
-          <span className="text-[11px] font-semibold tracking-wider text-[#4A154B] uppercase">
-            Luxury Cosmetics & Fragrances
+        <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#D4AF37]/40 shadow-xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#B88628]" />
+          <span className="text-[11px] font-bold tracking-widest text-[#111111] uppercase">
+            Official Luxury Flagship
           </span>
         </div>
       </div>
 
-      {/* Center Luxury Emblem & Typography */}
-      <div className="flex flex-col items-center max-w-xs space-y-6 my-auto">
-        {/* Monogram Crest */}
-        <div className="relative group cursor-pointer" onClick={handleEnter}>
-          <div className="w-28 h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#B76E79] via-[#E8D5C4] to-[#4A154B] shadow-[0_10px_30px_rgba(183,110,121,0.25)] animate-pulse">
-            <div className="w-full h-full rounded-full bg-white flex flex-col items-center justify-center p-2 border border-[#F3EAF4]">
-              <span className="font-serif text-4xl font-bold bg-gradient-to-r from-[#4A154B] via-[#8C4A5A] to-[#B76E79] bg-clip-text text-transparent">
-                SC
-              </span>
-              <span className="text-[8px] uppercase tracking-[0.25em] text-[#B76E79] font-semibold mt-0.5">
-                EST. 2026
-              </span>
-            </div>
+      {/* Center Luxury Emblem & Official Logo */}
+      <div className="flex flex-col items-center max-w-xs space-y-4 my-auto cursor-pointer" onClick={handleEnter}>
+        <div className="relative group p-2">
+          {/* Official Emblem & Full Typography */}
+          <div className="w-56 h-56 sm:w-64 sm:h-64 rounded-3xl p-1 bg-[#FAF4EE] border border-[#E8D5C4] shadow-lg flex items-center justify-center transition-transform hover:scale-[1.02]">
+            <img
+              src="/assets/sagunika_logo.svg"
+              alt="Sagunika Cosmetics Official Logo"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-contain"
+            />
           </div>
-          {/* Subtle spinning outer ring accent */}
-          <div className="absolute -inset-2 rounded-full border border-dashed border-[#B76E79]/30 pointer-events-none animate-spin [animation-duration:24s]" />
         </div>
 
-        {/* Brand Name & Tagline */}
-        <div className="space-y-2">
-          <h1
-            id="brand-title"
-            className="text-3xl font-serif font-bold tracking-wider text-[#2D0C34]"
-          >
-            SAGUNIKA
-          </h1>
-          <p className="text-xs uppercase tracking-[0.25em] font-semibold text-[#B76E79]">
-            COSMETIC
-          </p>
-          <div className="w-12 h-[1.5px] bg-gradient-to-r from-[#B76E79] to-[#4A154B] mx-auto my-3 opacity-60" />
-          <p
-            id="brand-tagline"
-            className="text-sm font-medium text-[#4A154B]/85 italic tracking-wide"
-          >
-            "Beauty That Inspires Confidence"
-          </p>
-        </div>
+        <p
+          id="brand-tagline"
+          className="text-xs font-medium text-[#7B2455] italic tracking-wider mt-1"
+        >
+          "Beauty That Inspires Confidence"
+        </p>
       </div>
 
       {/* Bottom Action & Status */}
